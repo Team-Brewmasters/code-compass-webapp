@@ -12,9 +12,9 @@ import { LambdaService } from './services/lambda.service';
 import { CardComponent } from "./shared/components/card/card.component";
 
 @NgModule({
-  declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule],
-  providers: [LambdaService,],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent],
+    providers: [LambdaService,],
+    bootstrap: [AppComponent],
+    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule, CardComponent]
 })
 export class AppModule { }

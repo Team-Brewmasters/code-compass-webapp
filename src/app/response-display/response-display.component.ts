@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LambdaService } from '../services/lambda.service';
-<<<<<<< HEAD
 import { Observable } from 'rxjs';
-=======
->>>>>>> 8563b9773c3fa56574c2c9f86f8eba9fb347ffaf
 
 @Component({
   selector: 'app-response-display',
