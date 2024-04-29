@@ -38,4 +38,13 @@
     <div *ngFor="let question of jsonResponse.suggestedQuestions" class="question-card" (click)="selectQuestion(question)">
       {{ question }}
     </div>
+
+    <div *ngIf="questionResponse" class="response-card">
+        <div class="confidence-score" [ngClass]="getConfidenceClass()">
+          {{ confidence }}
+        </div>
+        <div >
+            {{ questionResponse }}
+        </div>
+      </div>
   </div>
