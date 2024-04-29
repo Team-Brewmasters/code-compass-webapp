@@ -1,4 +1,4 @@
-interface Repository {
+interface RepositoryBaseDetails {
     name: string;
     description: string;
     technology_stack: {

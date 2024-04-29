@@ -33,6 +33,9 @@
     position: relative;
     width: 100%;
     transition: transform 0.3s ease;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
   }
 
   .input-field {
@@ -41,7 +44,7 @@
     box-sizing: border-box;
     border: none;
     border-radius: 25px;
-    background-color: #333;
+    background-color: rgba(42, 42, 42, 0.5);
     color: #fff;
     font-size: 16px;
     outline: none;
@@ -50,7 +53,7 @@
   }
 
   .input-field:focus {
-    background-color: #444;
+    background-color: rgba(92, 92, 92, 0.5);
   }
 
   .send-icon {
@@ -58,9 +61,14 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    color: #fff;
+    color: #9a9a9a;
     font-size: 20px;
     cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .send-icon:hover {
+    color: #fff;
   }
 
   .loading-indicator {
@@ -87,6 +95,10 @@
     display: block;
   }
 
+  .content.loaded {
+    transform: translateY(-100%);
+  }
+
   .response-container {
     width: 100%;
     opacity: 0;
@@ -108,7 +120,7 @@
 <app-particles></app-particles>
 <main class="main">
   <div class="content" [class.submitted]="isSubmitted">
-    <div class="input-container">
+    <div *ngIf="!responseData" class="input-container">
       <input 
         class="input-field" 
         type="text" 
@@ -134,7 +146,7 @@
   >
     <app-response-display 
       [jsonResponse]="responseData"
-      [githubUrl]="githubUrlInput"
+      [githubUrl]="githubUrl"
     ></app-response-display>
   </div>
 </main>
