@@ -21,7 +21,7 @@ export class AppComponent {
   callLambda() {
     this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(
       (response) => {
-        this.responseData = response;
+        this.responseData = JSON.parse(response);
         console.log('Lambda response:', response);
       },
       (error) => {

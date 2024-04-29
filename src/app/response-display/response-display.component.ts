@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./response-display.component.scss']
 })
 export class ResponseDisplayComponent {
-  @Input() jsonResponse: any;
+  @Input() jsonResponse: any = {};
+
+  ngOnInit() {
+    console.log('jsonResponse:', this.jsonResponse);
+  }
 }
