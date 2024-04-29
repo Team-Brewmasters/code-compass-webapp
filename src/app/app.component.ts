@@ -1,21 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ParticlesComponent } from "./particles/particles.component";
+import { LambdaService } from './services/lambda.service';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    imports: [RouterOutlet, ParticlesComponent]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   isSubmitted = false;
+  githubUrl = '';
+  responseData: any;
+
+  constructor(private lambdaService: LambdaService) {}
 
   onSubmit() {
     this.isSubmitted = true;
-    // Perform any additional actions or API calls here
+    this.callLambda();
+  }
+
+  callLambda() {
+    this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(
+      (response) => {
+        this.responseData = response;
+        console.log('Lambda response:', response);
+      },
+      (error) => {
+        console.error('Error calling Lambda:', error);
+      }
+    );
   }
 }
-
-

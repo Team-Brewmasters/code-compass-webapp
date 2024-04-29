@@ -90,10 +90,12 @@
 <main class="main">
   <div class="content" [class.submitted]="isSubmitted">
     <div class="input-container">
-      <input class="input-field" type="text" placeholder="Enter your input..." (keyup.enter)="onSubmit()">
-      <i class="send-icon fas fa-paper-plane" (click)="onSubmit()"></i>
+      <input class="input-field" type="text" placeholder="Enter GitHub URL..." [(ngModel)]="githubUrl" (keyup.enter)="onSubmit()">      <i class="send-icon fas fa-paper-plane" (click)="onSubmit()"></i>
     </div>
     <div class="loading-indicator"></div>
+  </div>
+  <div *ngIf="responseData" class="response-container">
+    <pre>{{ responseData | json }}</pre>
   </div>
 </main>
 
