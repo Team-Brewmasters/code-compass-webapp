@@ -8,9 +8,10 @@ import { Observable } from 'rxjs';
 export class LambdaService {
     private readonly lambdaUrl = 'https://gdplis53rtnhbo3v5mtcsxgpua0xuver.lambda-url.us-east-1.on.aws/';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     callSummaryLambda(githubUrl: string): Observable<any> {
-        return this.http.get<any>(`${this.lambdaUrl}?githubURL=${githubUrl}`);
+        console.log('githubUrl:', githubUrl);
+        return this.http.get<any>(`${this.lambdaUrl}?githubURL=${githubUrl}`, {responseType: 'json'});
     }
 }

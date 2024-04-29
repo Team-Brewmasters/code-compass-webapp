@@ -111,7 +111,7 @@
     <div *ngIf="!responseData" class="loading-indicator" [class.hide]="responseData"></div>
   </div>
 
-  <div *ngIf="responseData" class="response-container" [class.show]="responseData">    <app-response-display [jsonResponse]="responseData"></app-response-display>
+  <div *ngIf="isSubmitted" class="response-container" [class.show]="isSubmitted"><app-response-display [url]="githubUrl"></app-response-display>
   </div>
 </main>
 

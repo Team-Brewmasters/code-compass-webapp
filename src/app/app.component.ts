@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LambdaService } from './services/lambda.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

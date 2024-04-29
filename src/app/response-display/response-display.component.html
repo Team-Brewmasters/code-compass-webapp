@@ -19,6 +19,11 @@
       </li>
     </ul>
     <p><strong>Data Flow:</strong> {{ jsonResponse.overview.architecture.data_flow }}</p>
-    
-    <!-- Add more sections as needed based on the JSON structure -->
   </div>
+
+<div *ngIf="responseData$ | async as responseData; else loading">
+  <app-card [cardContent]="responseData"></app-card>
+</div>
+<ng-template #loading>
+  <div class="loading-indicator"></div>
+</ng-template>

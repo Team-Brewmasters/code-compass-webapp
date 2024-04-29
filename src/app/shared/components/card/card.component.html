@@ -1,0 +1,24 @@
+<ng-container class="frosted-glass-card" *ngIf="cardContent">
+    <h2>Repository Details</h2>
+    <p><strong>Name:</strong> {{ cardContent.repository.name }}</p>
+    <p><strong>Description:</strong> {{ cardContent.repository.description }}</p>
+    
+    <h3>Technology Stack</h3>
+    <ul>
+    <li><strong>Languages:</strong> {{ cardContent.repository.technology_stack.languages.join(', ') }}</li>
+    <li><strong>Frameworks:</strong> {{ cardContent.repository.technology_stack.frameworks.join(', ') }}</li>
+    <li><strong>Databases:</strong> {{ cardContent.repository.technology_stack.databases.join(', ') }}</li>
+    <li><strong>Tools:</strong> {{ cardContent.repository.technology_stack.tools.join(', ') }}</li>
+    </ul>
+    
+    <h3>Overview</h3>
+    <h4>Architecture</h4>
+    <ul>
+      <li *ngFor="let component of cardContent.overview.architecture.high_level_components">
+        <strong>{{ component.name }}:</strong> {{ component.description }}
+      </li>
+    </ul>
+    <p><strong>Data Flow:</strong> {{ cardContent.overview.architecture.data_flow }}</p>
+    
+    <!-- Add more sections as needed based on the JSON structure -->
+  </ng-container>
