@@ -7,8 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ResponseDisplayComponent {
   @Input() jsonResponse: any = {};
+  userInput: string = '';
 
-  ngOnInit() {
-    console.log('jsonResponse:', this.jsonResponse);
+  selectQuestion(question: string) {
+    this.userInput = question;
   }
 }

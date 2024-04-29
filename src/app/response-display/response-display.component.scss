@@ -33,3 +33,25 @@
   strong {
     font-weight: bold;
   }
+
+  .input-container {
+    margin-top: 20px;
+  }
+  
+  .suggested-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .question-card {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .question-card:hover {
+    background-color: #e0e0e0;
+  }
