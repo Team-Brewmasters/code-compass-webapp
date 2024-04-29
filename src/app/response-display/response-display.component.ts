@@ -12,4 +12,8 @@ export class ResponseDisplayComponent {
   selectQuestion(question: string) {
     this.userInput = question;
   }
+
+  submitQuestion() {
+    this.userInput = '';
+  }
 }

@@ -1,29 +1,41 @@
-<div *ngIf="jsonResponse" class="frosted-glass-card">
-    <h2>Repository Details</h2>
-    <p><strong>Name:</strong> {{ jsonResponse.repository.name }}</p>
-    <p><strong>Description:</strong> {{ jsonResponse.repository.description }}</p>
-    <h3>Technology Stack</h3>
-    <ul>
-    <li><strong>Languages:</strong> {{ jsonResponse.repository.technology_stack.languages.join(', ') }}</li>
-    <li><strong>Frameworks:</strong> {{ jsonResponse.repository.technology_stack.frameworks.join(', ') }}</li>
-    <li><strong>Databases:</strong> {{ jsonResponse.repository.technology_stack.databases.join(', ') }}</li>
-    <li><strong>Tools:</strong> {{ jsonResponse.repository.technology_stack.tools.join(', ') }}</li>
-    </ul>
-    <h3>Overview</h3>
-    <h4>Architecture</h4>
-    <ul>
-    <li *ngFor="let component of jsonResponse.overview.architecture.high_level_components">
-    <strong>{{ component.name }}:</strong> {{ component.description }}
-    </li>
-    </ul>
-    <p><strong>Data Flow:</strong> {{ jsonResponse.overview.architecture.data_flow }}</p>
-    <!-- Add more sections as needed based on the JSON structure -->
-    <div class="input-container">
+<div *ngIf="jsonResponse" class="repository-details">
+    <div class="card-container">
+      <div class="card">
+        <h2>Repository Details</h2>
+        <p><strong>Name:</strong> {{ jsonResponse.repository.name }}</p>
+        <p><strong>Description:</strong> {{ jsonResponse.repository.description }}</p>
+      </div>
+  
+      <div class="card">
+        <h3>Technology Stack</h3>
+        <ul>
+          <li><strong>Languages:</strong> {{ jsonResponse.repository.technology_stack.languages.join(', ') }}</li>
+          <li><strong>Frameworks:</strong> {{ jsonResponse.repository.technology_stack.frameworks.join(', ') }}</li>
+          <li><strong>Databases:</strong> {{ jsonResponse.repository.technology_stack.databases.join(', ') }}</li>
+          <li><strong>Tools:</strong> {{ jsonResponse.repository.technology_stack.tools.join(', ') }}</li>
+        </ul>
+      </div>
+  
+      <div class="card">
+        <h3>Overview</h3>
+        <h4>Architecture</h4>
+        <ul>
+          <li *ngFor="let component of jsonResponse.overview.architecture.high_level_components">
+            <strong>{{ component.name }}:</strong> {{ component.description }}
+          </li>
+        </ul>
+        <p><strong>Data Flow:</strong> {{ jsonResponse.overview.architecture.data_flow }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="input-container">
     <input type="text" [(ngModel)]="userInput" placeholder="Ask a question">
-    </div>
-    <div class="suggested-questions">
+    <button (click)="submitQuestion()">Submit</button>
+  </div>
+  
+  <div class="suggested-questions">
     <div *ngFor="let question of jsonResponse.suggestedQuestions" class="question-card" (click)="selectQuestion(question)">
-    {{ question }}
+      {{ question }}
     </div>
-    </div>
-    </div>
+  </div>
