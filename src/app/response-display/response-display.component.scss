@@ -1,12 +1,22 @@
-.frosted-glass-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+.repository-details {
+    margin-bottom: 20px;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .card {
+    background-color: rgba(39, 39, 39, 0.1);
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     padding: 20px;
-    margin-top: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
+    min-width: 300px;
   }
   
   h2, h3, h4 {
@@ -44,3 +54,95 @@
     animation: spin 1s linear infinite;
     margin-top: 20px;
   }
+  
+  .input-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 300px;
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .suggested-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .question-card {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .question-card:hover {
+    background-color: #e0e0e0;
+  }
+
+  .response-card {
+    position: relative;
+    background-color: rgba(42, 42, 42, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    color: #fff;
+  
+    .confidence-score {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+  
+      &.high-confidence {
+        background-color: #4caf50;
+        color: #fff;
+      }
+  
+      &.medium-confidence {
+        background-color: #ffc107;
+        color: #000;
+      }
+  
+      &.low-confidence {
+        background-color: #f44336;
+        color: #fff;
+      }
+    }
+  
+    markdown {
+      color: #fff;
+    }
+  }
+
+
+  
+//   .response-card markdown {
+//     color: #fff;
+//   }

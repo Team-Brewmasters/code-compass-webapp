@@ -12,9 +12,10 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    justify-content: center;
+    padding: 0;
     box-sizing: inherit;
     position: relative;
   }
@@ -25,6 +26,7 @@
     align-items: center;
     width: 100%;
     max-width: 500px;
+    transition: transform 0.3s ease;
   }
 
   .input-container {
@@ -77,8 +79,8 @@
     100% { transform: rotate(360deg); }
   }
 
-  .content.submitted .input-container {
-    transform: translateY(-150px);
+  .content.submitted {
+    transform: translateY(-48%);
   }
 
   .content.submitted .loading-indicator {
@@ -86,12 +88,15 @@
   }
 
   .response-container {
+    width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    display: flex;
+    display: none;
+    margin-top: 20px;
   }
 
   .response-container.show {
+    display: block;
     opacity: 1;
   }
 
@@ -100,19 +105,37 @@
     transition: opacity 0.5s ease-in-out;
   }
 </style>
-
 <app-particles></app-particles>
 <main class="main">
   <div class="content" [class.submitted]="isSubmitted">
     <div class="input-container">
-      <input class="input-field" type="text" placeholder="Enter GitHub URL..." [(ngModel)]="githubUrl" (keyup.enter)="onSubmit()">
-      <i class="send-icon fas fa-paper-plane" (click)="onSubmit()"></i>
+      <input 
+        class="input-field" 
+        type="text" 
+        placeholder="Enter GitHub URL..." 
+        [(ngModel)]="githubUrl" 
+        (keyup.enter)="onSubmit()"
+      >
+      <i 
+        class="send-icon fas fa-paper-plane" 
+        (click)="onSubmit()"
+      ></i>
     </div>
-    <div *ngIf="!responseData" class="loading-indicator" [class.hide]="responseData"></div>
+    <div 
+      *ngIf="!responseData" 
+      class="loading-indicator" 
+      [class.hide]="responseData"
+    ></div>
   </div>
-
-  <div *ngIf="isSubmitted" class="response-container" [class.show]="isSubmitted"><app-response-display [url]="githubUrl"></app-response-display>
+  <div 
+    *ngIf="responseData" 
+    class="response-container" 
+    [class.show]="responseData"
+  >
+    <app-response-display 
+      [jsonResponse]="responseData"
+      [githubUrl]="githubUrlInput"
+    ></app-response-display>
   </div>
 </main>
-
 <router-outlet></router-outlet>

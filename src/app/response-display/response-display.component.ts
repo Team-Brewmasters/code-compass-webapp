@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { LambdaService } from '../services/lambda.service';
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
+=======
+>>>>>>> 8563b9773c3fa56574c2c9f86f8eba9fb347ffaf
 
 @Component({
   selector: 'app-response-display',
@@ -9,15 +12,44 @@ import { Observable } from 'rxjs';
 })
 export class ResponseDisplayComponent {
   @Input() jsonResponse: any = {};
-  @Input() url: any = '';
-  responseData$: Observable<any> | null = null;
+  @Input() githubUrl: string = '';
+  userInput: string = '';
+  questionResponse: string = '';
+  confidence: string = '';
+  responseData$: Observable<any>;
 
-  constructor (private lambdaService: LambdaService) {
+
+  constructor(private lambdaService: LambdaService) {
+    this.responseData$ = this.lambdaService.callSummaryLambda(this.githubUrl);
+  }
+
+  selectQuestion(question: string) {
+    this.userInput = question;
+  }
+
+  submitQuestion() {
+   
+      this.lambdaService.callAskQuestionLambda(this.githubUrl, this.userInput).subscribe(
+        (response) => {
+          this.questionResponse = JSON.parse(response).answer;
+          this.confidence = JSON.parse(response).confidence;
+          console.log('Ask Question Lambda response:', response);
+        },
+        (error) => {
+          console.error('Error calling Lambda:', error);
+        }
+      );
     
   }
 
-  ngOnInit() {
-    console.log('url:', this.url);
-    this.responseData$ = this.lambdaService.callSummaryLambda(this.url);
+  getConfidenceClass() {
+    const confidenceValue = parseFloat(this.confidence);
+    if (confidenceValue >= 0.8) {
+      return 'high-confidence';
+    } else if (confidenceValue >= 0.5) {
+      return 'medium-confidence';
+    } else {
+      return 'low-confidence';
+    }
   }
 }
