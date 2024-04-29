@@ -10,5 +10,12 @@ import { ParticlesComponent } from "./particles/particles.component";
     imports: [RouterOutlet, ParticlesComponent]
 })
 export class AppComponent {
-  title = 'code-compass.webapp';
+  isSubmitted = false;
+
+  onSubmit() {
+    this.isSubmitted = true;
+    // Perform any additional actions or API calls here
+  }
 }
+
+
