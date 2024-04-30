@@ -10,7 +10,8 @@ import { delay } from 'rxjs/operators';
 export class LambdaService {
     private readonly summaryUrl = 'https://gdplis53rtnhbo3v5mtcsxgpua0xuver.lambda-url.us-east-1.on.aws/';
     private readonly askQuestionUrl = 'https://24lhekjptn2hjbrjukt6f4xqge0hrctk.lambda-url.us-east-1.on.aws/ ';
-    private readonly fileGenerationUrl = 'https://tpimx374dlhzfsohjivqwsyuoy0yigdz.lambda-url.us-east-1.on.aws/'
+    private readonly fileGenerationUrl = 'https://tpimx374dlhzfsohjivqwsyuoy0yigdz.lambda-url.us-east-1.on.aws/';
+    private readonly prSummaryUrl = 'https://3k77poexhjhtz74yzcfv7roezq0madng.lambda-url.us-east-1.on.aws/';
 
     constructor(private http: HttpClient) { }
 
@@ -33,7 +34,9 @@ export class LambdaService {
 
     callFileGenerationLambda(githubUrl: string, fileType: string): Observable<any> {
         return this.http.get<any>(`${this.fileGenerationUrl}?githubURL=${githubUrl}&fileType=${fileType}`);
+    }
 
-
+    callPRSummaryLambda(githubUrl: string): Observable<any> {
+        return this.http.get<any>(`${this.prSummaryUrl}?githubURL=${githubUrl}`);
     }
 }
