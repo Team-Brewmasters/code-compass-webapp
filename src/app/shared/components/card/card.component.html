@@ -6,13 +6,13 @@
       <p><strong>Description:</strong> {{ cardContent.value.description }}</p>
     </div>
 
-    <div *ngIf="cardContent.key === 'repository'" class="card">
+    <div *ngIf="cardContent.key === 'technology_stack'" class="card">
       <h3>Technology Stack</h3>
       <ul>
-        <li><strong>Languages:</strong> {{ cardContent.value.technology_stack?.languages.join(', ') }}</li>
-        <li><strong>Frameworks:</strong> {{ cardContent.value.technology_stack?.frameworks.join(', ') }}</li>
-        <li><strong>Databases:</strong> {{ cardContent.value.technology_stack?.databases.join(', ') }}</li>
-        <li><strong>Tools:</strong> {{ cardContent.value.technology_stack?.tools.join(', ') }}</li>
+        <li><strong>Languages:</strong> {{ cardContent.value.technology_stack.languages.join(', ') }}</li>
+        <li><strong>Frameworks:</strong> {{ cardContent.value.technology_stack.frameworks.join(', ') }}</li>
+        <li><strong>Databases:</strong> {{ cardContent.value.technology_stack.databases.join(', ') }}</li>
+        <li><strong>Tools:</strong> {{ cardContent.value.technology_stack.tools.join(', ') }}</li>
       </ul>
     </div>
 
@@ -20,11 +20,70 @@
       <h3>Overview</h3>
       <h4>Architecture</h4>
       <ul>
-        <li *ngFor="let component of cardContent?.value.architecture.high_level_components">
+        <li *ngFor="let component of cardContent.value.architecture.high_level_components">
           <strong>{{ component.name }}:</strong> {{ component.description }}
         </li>
       </ul>
-      <p><strong>Data Flow:</strong> {{ cardContent?.value?.architecture.data_flow }}</p>
+      <p><strong>Data Flow:</strong> {{ cardContent.value.architecture.data_flow }}</p>
+    </div>
+
+    <div *ngIf="cardContent.key === 'security'" class="card">
+      <h3>Overview</h3>
+      <h4>Security</h4>
+      <ul>
+        <li *ngFor="let vulnerability of cardContent.value.vulnerabilities">
+          <strong>Description:</strong> {{ vulnerability.description }}
+          <ul>
+            <strong>Recommendation:</strong>
+            <li *ngFor="let recommendation of vulnerability.fix_recommendations">
+               {{ recommendation }}
+            </li>
+          </ul>
+          <strong>Severity:</strong> {{ vulnerability.severity }}
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="cardContent.key === 'performance'" class="card">
+      <h3>Overview</h3>
+      <h4>Performance</h4>
+      <ul>
+        <div *ngIf="cardContent.value.issues.length > 0">
+          <strong>Issues:</strong>
+          <li *ngFor="let issue of cardContent.value.issues">
+            {{ issue }}
+          </li>
+        </div>
+        <div *ngIf="cardContent.value.issues.length == 0">
+          <li>No issues found</li>
+        </div>
+      </ul>
+    </div>
+
+    <div *ngIf="cardContent.key === 'code_analysis'" class="card">
+      <h3>Code Analysis</h3>
+      <h4>Classes</h4>
+      <ul>
+        <li *ngFor="let class of cardContent.value.classes">
+          <strong>{{ class.name }}:</strong>
+          <ul>
+            <li *ngFor="let method of class.methods">
+              <strong>{{ method.name }}:</strong> {{ method.description }}
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="cardContent.key === 'files'" class="card">
+      <h3>Code Analysis</h3>
+      <h4>Files</h4>
+      <ul>
+        <li *ngFor="let file of cardContent.value">
+          <strong>Path:</strong> {{ file.path }}<br>
+          <strong>Description:</strong> {{ file.summary }}<br>
+          <strong>Size:</strong> {{ file.size }} lines of code.
+        </li>
+      </ul>
     </div>
   </div>
 </div>

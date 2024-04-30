@@ -3,8 +3,11 @@
 }
 
 .grid-container {
-  height: 100%;
+  display: flex;
+  position: relative;
+  height: 100vh;
   width: 100%;
+  padding-top: 40px;
 }
 
 

@@ -14,11 +14,12 @@ import { LambdaService } from './services/lambda.service';
 import { RepoSelectionService } from './services/repo-selection.service';
 import { CardComponent } from "./shared/components/card/card.component";
 import { MatGridListModule } from '@angular/material/grid-list';
+import { SummaryDataPipePipe } from './shared/pipe/summary-data-pipe.pipe';
 
 @NgModule({
-    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective],
+    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective,],
     providers: [LambdaService, RepoSelectionService],
     bootstrap: [AppComponent],
-    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), CardComponent, MatGridListModule]
+    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), CardComponent, MatGridListModule, SummaryDataPipePipe]
 })
 export class AppModule { }

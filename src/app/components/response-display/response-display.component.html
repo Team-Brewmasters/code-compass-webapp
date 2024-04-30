@@ -31,12 +31,16 @@
   </div>
 </div>
 
-
 <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
 
-<mat-grid-list cols="3" rowHeight="fit" gutterSize="20" class="grid-container">
-  <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue">
-    <app-card [cardContent]="item"></app-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="grid-container">
+  <mat-grid-list cols="5" rowHeight="200px" gutterSize="15" style="height: 100%; width: 100%">
+    <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe"
+      [colspan]="item.col"
+      [rowspan]="item.row">
+      <app-card [cardContent]="item" style="height: 100%; width: 100%"></app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
 
