@@ -51,7 +51,7 @@ export class SummaryDataPipePipe implements PipeTransform {
           const securityCard = {...card}; 
           securityCard.key = 'security';
           securityCard.value = item.value.security;
-          securityCard.col = 3;
+          securityCard.col = 2;
           securityCard.row = 3;
           cards.push(securityCard);
         }
@@ -59,7 +59,7 @@ export class SummaryDataPipePipe implements PipeTransform {
           const performanceCard = {...card}; 
           performanceCard.key = 'performance';
           performanceCard.value = item.value.performance;
-          performanceCard.col = 2;
+          performanceCard.col = 1;
           performanceCard.row = 2;
           cards.push(performanceCard);
         }
@@ -67,21 +67,21 @@ export class SummaryDataPipePipe implements PipeTransform {
       else if (item.key === 'code_analysis') {
         card.key = 'code_analysis';
         card.value = item.value;
-        card.col = 3;
-        card.row = 3;
+        card.col = 2;
+        card.row = 4;
         cards.push(card);
         if (item.value.files) {
           const filesCard = {...card}; 
           filesCard.key = 'files';
           filesCard.value = item.value.files;
-          filesCard.col = 2;
-          filesCard.row = 5;
+          filesCard.col = 3;
+          filesCard.row = 4;
           cards.push(filesCard);
         }
-      }
+       }
     }
     cards.sort((a, b) => {
-      const order = ['repository', 'technology_stack', 'code_analysis', 'performance', 'security', 'files'];
+      const order = ['repository', 'technology_stack', 'performance', 'overview', 'security', 'code_analysis', 'files'];
       return order.indexOf(a.key) - order.indexOf(b.key);
     });
     return cards;

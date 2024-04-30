@@ -17,9 +17,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { SummaryDataPipePipe } from './shared/pipe/summary-data-pipe.pipe';
 
 @NgModule({
-    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective,],
+    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, CardComponent],
     providers: [LambdaService, RepoSelectionService],
     bootstrap: [AppComponent],
-    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), CardComponent, MatGridListModule, SummaryDataPipePipe]
+    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), MatGridListModule, SummaryDataPipePipe]
 })
 export class AppModule { }
