@@ -20,6 +20,13 @@ export class AskQuestionComponent {
   suggestedQuestions: string[] = [];
 
   constructor(private lambdaService: LambdaService, private repoSelectionService: RepoSelectionService) { }
+  ngOnInit() {
+    this.githubUrl = this.repoSelectionService.getSelectedRepo();
+
+    this.repoSelectionService.selectedRepo$.subscribe(repoUrl => {
+      this.githubUrl = repoUrl;
+    });
+  }
 
   submitQuestion() {
     this.githubUrl = this.repoSelectionService.getSelectedRepo()

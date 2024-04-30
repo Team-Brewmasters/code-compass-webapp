@@ -13,6 +13,7 @@ export class AppComponent {
   githubUrlInput = '';
   responseData: any;
 
+
   hasLoadedData = false;
 
   constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) { }
@@ -23,8 +24,7 @@ export class AppComponent {
   }
 
   callSummaryLambda() {
-    this.repoSelelectionService.selectRepo(this.githubUrlInput);
-
+    this.repoSelelectionService.selectRepo(this.githubUrl);
     this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(
       (response) => {
         this.responseData = JSON.parse(response);
