@@ -5,9 +5,10 @@
     </h1>
     <h3 class="subtitle">{{jsonResponse.repository.description}}</h3>
   </div>
+ <!-- 
   <div class="card-container">
 
-
+ 
     <div class="card">
       <h3>Technology Stack</h3>
       <ul>
@@ -29,12 +30,12 @@
       <p><strong>Data Flow:</strong> {{ jsonResponse.overview.architecture.data_flow }}</p>
     </div>
   </div>
-</div>
+</div> -->
 
 <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
 
 <div class="grid-container">
-  <mat-grid-list cols="5" rowHeight="200px" gutterSize="15" style="height: 100%; width: 100%">
+  <mat-grid-list cols="5" rowHeight="100px" gutterSize="15" style="height: 100%; width: 100%">
     <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe"
       [colspan]="item.col"
       [rowspan]="item.row">

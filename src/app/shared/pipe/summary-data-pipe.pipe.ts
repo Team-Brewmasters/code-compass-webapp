@@ -23,6 +23,8 @@ export class SummaryDataPipePipe implements PipeTransform {
           name: item.value.name,
           description: item.value.description
         }
+        card.col = 2;
+        card.row = 2;
         cards.push(card);
         if (item.value.technology_stack) {
           const techStackCard = {...card}; 
@@ -35,20 +37,22 @@ export class SummaryDataPipePipe implements PipeTransform {
               tools: item.value.technology_stack.tools
             }
           };
+          techStackCard.col = 2;
+          techStackCard.row = 2;
           cards.push(techStackCard);
         }
       } else if (item.key === 'overview') {
         card.key = 'overview';
         card.value = item.value;
         card.col = 3;
-        card.row = 2;
+        card.row = 3;
         cards.push(card);
         if (item.value.security) {
           const securityCard = {...card}; 
           securityCard.key = 'security';
           securityCard.value = item.value.security;
           securityCard.col = 3;
-          securityCard.row = 2;
+          securityCard.row = 4;
           cards.push(securityCard);
         }
         if (item.value.performance) {
@@ -63,19 +67,23 @@ export class SummaryDataPipePipe implements PipeTransform {
       else if (item.key === 'code_analysis') {
         card.key = 'code_analysis';
         card.value = item.value;
-        card.col = 2;
-        card.row = 2;
+        card.col = 3;
+        card.row = 3;
         cards.push(card);
         if (item.value.files) {
           const filesCard = {...card}; 
           filesCard.key = 'files';
           filesCard.value = item.value.files;
-          filesCard.col = 3;
-          filesCard.row = 2;
+          filesCard.col = 2;
+          filesCard.row = 5;
           cards.push(filesCard);
         }
       }
     }
-    return cards
+    cards.sort((a, b) => {
+      const order = ['repository', 'technology_stack', 'code_analysis', 'performance', 'security', 'files'];
+      return order.indexOf(a.key) - order.indexOf(b.key);
+    });
+    return cards;
   }
 }
