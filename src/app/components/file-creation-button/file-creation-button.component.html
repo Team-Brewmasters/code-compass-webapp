@@ -1,0 +1,7 @@
+<div>
+    <button *ngIf="!isLoading" class="create-file-button" (click)="createFile()">{{ buttonText }}</button>
+    <div *ngIf="isLoading" class="create-file-button">
+        Loading {{ buttonText }}...
+    </div>
+    <!-- <div *ngIf="isFileCreated" class="file-created-message">File created successfully!</div> -->
+</div>
