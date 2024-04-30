@@ -1,4 +1,4 @@
-# CodeCompassWebapp
+# Code Compass
 
 
 https://code-compass-webapp-ei0prgaum-team-brewmasters.vercel.app
