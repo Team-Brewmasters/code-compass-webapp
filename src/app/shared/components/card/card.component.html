@@ -1,3 +1,30 @@
-<ng-container class="frosted-glass-card" *ngIf="cardContent">
-  
-  </ng-container>
+<div class="frosted-glass-card" *ngIf="cardContent">
+  <div class="card-container">
+    <div *ngIf="cardContent.key === 'repository'" class="card">
+      <h2>Repository Details</h2>
+      <p><strong>Name:</strong> {{ cardContent.value.name }}</p>
+      <p><strong>Description:</strong> {{ cardContent.value.description }}</p>
+    </div>
+
+    <div *ngIf="cardContent.key === 'repository'" class="card">
+      <h3>Technology Stack</h3>
+      <ul>
+        <li><strong>Languages:</strong> {{ cardContent.value.technology_stack?.languages.join(', ') }}</li>
+        <li><strong>Frameworks:</strong> {{ cardContent.value.technology_stack?.frameworks.join(', ') }}</li>
+        <li><strong>Databases:</strong> {{ cardContent.value.technology_stack?.databases.join(', ') }}</li>
+        <li><strong>Tools:</strong> {{ cardContent.value.technology_stack?.tools.join(', ') }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="cardContent.key === 'overview'" class="card">
+      <h3>Overview</h3>
+      <h4>Architecture</h4>
+      <ul>
+        <li *ngFor="let component of cardContent?.value.architecture.high_level_components">
+          <strong>{{ component.name }}:</strong> {{ component.description }}
+        </li>
+      </ul>
+      <p><strong>Data Flow:</strong> {{ cardContent?.value?.architecture.data_flow }}</p>
+    </div>
+  </div>
+</div>

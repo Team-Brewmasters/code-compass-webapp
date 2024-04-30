@@ -16,6 +16,8 @@ export class CardComponent {
     
   }
 
-  
+  ngOnInit(): void {
+    console.log(this.cardContent);
+  }
   
 }

@@ -8,8 +8,14 @@
     gap: 20px;
     overflow-x: auto;
     padding-bottom: 10px;
+
   }
   
+  .grid-container {
+    height: 100%;
+    width: 100%;
+  }
+
   .card {
     background-color: rgba(39, 39, 39, 0.1);
     backdrop-filter: blur(5px);

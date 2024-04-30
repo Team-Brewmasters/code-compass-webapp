@@ -33,9 +33,10 @@
 
 
 <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
-<div *ngIf="responseData$ | async as responseData; else loading">
-  <app-card [cardContent]="responseData"></app-card>
-</div>
-<ng-template #loading>
-  <div class="loading-indicator"></div>
-</ng-template>
+
+<mat-grid-list cols="3" rowHeight="fit" gutterSize="20" class="grid-container">
+  <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue">
+    <app-card [cardContent]="item"></app-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
