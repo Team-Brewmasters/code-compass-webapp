@@ -52,7 +52,7 @@ export class SummaryDataPipePipe implements PipeTransform {
           securityCard.key = 'security';
           securityCard.value = item.value.security;
           securityCard.col = 3;
-          securityCard.row = 4;
+          securityCard.row = 3;
           cards.push(securityCard);
         }
         if (item.value.performance) {

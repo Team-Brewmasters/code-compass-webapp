@@ -35,7 +35,7 @@
 <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
 
 <div class="grid-container">
-  <mat-grid-list cols="5" rowHeight="100px" gutterSize="15" style="height: 100%; width: 100%">
+  <mat-grid-list cols="5" rowHeight="125px" gutterSize="15" style="height: 100%; width: 100%">
     <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe"
       [colspan]="item.col"
       [rowspan]="item.row">
