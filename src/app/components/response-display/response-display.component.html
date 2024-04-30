@@ -34,14 +34,7 @@
 
   <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
   <app-file-creation-buttons> </app-file-creation-buttons>
-  <div class=wsd wsd-style="modern-blue">
-    <pre>
-
-    Alice->Bob: Authentication Request
-    Bob-->Alice: Authentication Response
-    
-    </pre>
-  </div>
+  <app-architecture-diagram-display></app-architecture-diagram-display>
   <div class="grid-container">
     <mat-grid-list cols="5" rowHeight="125px" gutterSize="15" style="height: 100%; width: 100%">
       <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe" [colspan]="item.col"

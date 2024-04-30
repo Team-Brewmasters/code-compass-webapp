@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 import { AppComponent } from './app.component';
+import { ArchitectureDiagramDisplayComponent } from './architecture-diagram-display/architecture-diagram-display.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { FileCreationButtonComponent } from './components/file-creation-button/file-creation-button.component';
 import { FileCreationButtonsComponent } from './components/file-creation-buttons/file-creation-buttons.component';
@@ -19,7 +20,7 @@ import { CardComponent } from "./shared/components/card/card.component";
 import { SummaryDataPipePipe } from './shared/pipe/summary-data-pipe.pipe';
 
 @NgModule({
-    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonsComponent, FileCreationButtonComponent],
+    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonsComponent, FileCreationButtonComponent, ArchitectureDiagramDisplayComponent],
     providers: [LambdaService, RepoSelectionService],
     bootstrap: [AppComponent],
     imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), CardComponent, MatGridListModule, SummaryDataPipePipe]
