@@ -20,9 +20,9 @@ import { CardComponent } from "./shared/components/card/card.component";
 import { SummaryDataPipePipe } from './shared/pipe/summary-data-pipe.pipe';
 
 @NgModule({
-    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonsComponent, FileCreationButtonComponent, ArchitectureDiagramDisplayComponent],
+    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonsComponent, FileCreationButtonComponent, ArchitectureDiagramDisplayComponent, CardComponent],
     providers: [LambdaService, RepoSelectionService],
     bootstrap: [AppComponent],
-    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), CardComponent, MatGridListModule, SummaryDataPipePipe]
+    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), MatGridListModule, SummaryDataPipePipe]
 })
 export class AppModule { }
