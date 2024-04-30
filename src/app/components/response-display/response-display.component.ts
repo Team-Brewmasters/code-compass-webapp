@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LambdaService } from '../services/lambda.service';
-import { RepoSelectionService } from '../services/repo-selection.service';
+import { LambdaService } from '../../services/lambda.service';
+import { RepoSelectionService } from '../../services/repo-selection.service';
 
 @Component({
   selector: 'app-response-display',
@@ -27,18 +27,18 @@ export class ResponseDisplayComponent {
   }
 
   submitQuestion() {
-   
-      this.lambdaService.callAskQuestionLambda(this.githubUrl, this.userInput).subscribe(
-        (response) => {
-          this.questionResponse = JSON.parse(response).answer;
-          this.confidence = JSON.parse(response).confidence;
-          console.log('Ask Question Lambda response:', response);
-        },
-        (error) => {
-          console.error('Error calling Lambda:', error);
-        }
-      );
-    
+
+    this.lambdaService.callAskQuestionLambda(this.githubUrl, this.userInput).subscribe(
+      (response) => {
+        this.questionResponse = JSON.parse(response).answer;
+        this.confidence = JSON.parse(response).confidence;
+        console.log('Ask Question Lambda response:', response);
+      },
+      (error) => {
+        console.error('Error calling Lambda:', error);
+      }
+    );
+
   }
 
   getConfidenceClass() {

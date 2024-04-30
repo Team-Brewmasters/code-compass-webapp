@@ -15,7 +15,7 @@ export class AppComponent {
 
   hasLoadedData = false;
 
-  constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) {}
+  constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) { }
 
   onSubmit() {
     this.isSubmitted = true;
@@ -23,7 +23,6 @@ export class AppComponent {
   }
 
   callSummaryLambda() {
-    this.githubUrl = "https://www.github.com/Team-Brewmasters/code-compass-webapp"
     this.repoSelelectionService.selectRepo(this.githubUrlInput);
 
     this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(

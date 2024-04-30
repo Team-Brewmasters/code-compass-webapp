@@ -13,4 +13,8 @@ export class RepoSelectionService {
     selectRepo(repoUrl: string) {
         this.selectedRepoSource.next(repoUrl);
     }
+
+    getSelectedRepo() {
+        return this.selectedRepoSource.getValue();
+    }
 }

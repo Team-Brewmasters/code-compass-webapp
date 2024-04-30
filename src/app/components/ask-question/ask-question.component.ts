@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-import { LambdaService } from '../services/lambda.service';
-import { RepoSelectionService } from '../services/repo-selection.service';
+import { Component, Input } from '@angular/core';
+import { LambdaService } from '../../services/lambda.service';
+import { RepoSelectionService } from '../../services/repo-selection.service';
 
 @Component({
   selector: 'app-ask-question',
-  standalone: true,
-  imports: [],
   templateUrl: './ask-question.component.html',
   styleUrl: './ask-question.component.scss'
 })
@@ -13,19 +11,20 @@ export class AskQuestionComponent {
 
   githubUrl: string = '';
   userInput: string = '';
-  confidence: number = 0;
+  confidence: string = '';
+  isLoading: boolean = false;
 
   questionResponse: string = '';
+
+  @Input()
+  suggestedQuestions: string[] = [];
 
   constructor(private lambdaService: LambdaService, private repoSelectionService: RepoSelectionService) { }
 
   submitQuestion() {
-   this.repoSelectionService.selectedRepo$.subscribe(
-      (repo) => {
-        this.githubUrl = repo;
-      }
-    );
-    
+    this.githubUrl = this.repoSelectionService.getSelectedRepo()
+
+
     this.lambdaService.callAskQuestionLambda(this.githubUrl, this.userInput).subscribe(
       (response) => {
         this.questionResponse = JSON.parse(response).answer;
@@ -36,7 +35,22 @@ export class AskQuestionComponent {
         console.error('Error calling Lambda:', error);
       }
     );
-  
-}
+
+  }
+
+  getConfidenceClass() {
+    const confidenceValue = parseFloat(this.confidence);
+    if (confidenceValue >= 0.8) {
+      return 'high-confidence';
+    } else if (confidenceValue >= 0.5) {
+      return 'medium-confidence';
+    } else {
+      return 'low-confidence';
+    }
+  }
+
+  selectQuestion(question: string) {
+    this.userInput = question;
+  }
 
 }

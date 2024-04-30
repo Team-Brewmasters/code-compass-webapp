@@ -83,8 +83,13 @@
   }
 
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   .content.submitted {
@@ -121,33 +126,14 @@
 <main class="main">
   <div class="content" [class.submitted]="isSubmitted">
     <div *ngIf="!responseData" class="input-container">
-      <input 
-        class="input-field" 
-        type="text" 
-        placeholder="Enter GitHub URL..." 
-        [(ngModel)]="githubUrl" 
-        (keyup.enter)="onSubmit()"
-      >
-      <i 
-        class="send-icon fas fa-paper-plane" 
-        (click)="onSubmit()"
-      ></i>
+      <input class="input-field" type="text" placeholder="Enter GitHub URL..." [(ngModel)]="githubUrl"
+        (keyup.enter)="onSubmit()">
+      <i class="send-icon fas fa-paper-plane" (click)="onSubmit()"></i>
     </div>
-    <div 
-      *ngIf="!responseData" 
-      class="loading-indicator" 
-      [class.hide]="responseData"
-    ></div>
+    <div *ngIf="!responseData" class="loading-indicator" [class.hide]="responseData"></div>
   </div>
-  <div 
-    *ngIf="responseData" 
-    class="response-container" 
-    [class.show]="responseData"
-  >
-    <app-response-display 
-      [jsonResponse]="responseData"
-      [githubUrl]="githubUrl"
-    ></app-response-display>
+  <div *ngIf="responseData" class="response-container" [class.show]="responseData">
+    <app-response-display [jsonResponse]="responseData" [githubUrl]="githubUrl"></app-response-display>
   </div>
 </main>
 <router-outlet></router-outlet>
