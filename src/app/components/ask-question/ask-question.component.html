@@ -1,13 +1,17 @@
-<div class="ask-question-container" [class.show]="!isLoading">
+<div class="ask-question-container" [class.show]="true">
   <div class="input-container">
     <input class="input-field" type="text" [(ngModel)]="userInput"
       placeholder="Ask a question about the repository here...">
-    <button class="send-icon" (click)="submitQuestion()">
+    <button *ngIf="!isLoading" class="send-icon" (click)="submitQuestion()">
       <i class="fas fa-paper-plane"></i>
     </button>
+    <div *ngIf="isLoading" class="loading-icon">
+      <!-- <i class="fas fa-spinner"></i> -->
+      <div *ngIf="isLoading" class="loading-indicator"></div>
+    </div>
   </div>
 
-  <div *ngIf="isLoading" class="loading-indicator"></div>
+  <!-- <div *ngIf="isLoading" class="loading-indicator"></div> -->
 
   <div class="suggested-questions">
     <div *ngFor="let question of suggestedQuestions" class="question-card" (click)="selectQuestion(question)">
