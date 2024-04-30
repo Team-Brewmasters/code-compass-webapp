@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Code Compass Webapp
+host: gdplis53rtnhbo3v5mtcsxgpua0xuver.lambda-url.us-east-1.on.aws
+basePath: /
+schemes:
+- https
+paths:
+  /summary:
+    get:
+      summary: Retrieve Summary Information for GitHub Repository
+      operationId: getSummary
+      produces:
+      - application/json
+      parameters:
+      - name: githubURL
+        in: query
+        description: GitHub repository URL
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/SummaryResponse'
+        404:
+          description: Repository not found
+  /askQuestion:
+    get:
+      summary: Ask a Question about the Repository
+      operationId: askQuestion
+      produces:
+      - application/json
+      parameters:
+      - name: githubURL
+        in: query
+        description: GitHub repository URL
+        required: true
+        type: string
+      - name: question
+        in: query
+        description: Question input by the user related to the repository
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/QuestionAnswerResponse'
+        404:
+          description: Question could not be resolved or repository not found
+definitions:
+  SummaryResponse:
+    type: object
+    properties:
+      repository:
+        type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          technology_stack:
+            type: array
+            items:
+              type: string
+      overview:
+        type: object
+        properties:
+          architecture:
+            type: array
+            items:
+              type: object
+              properties:
+                high_level_components:
+                  type: string
+                data_flow:
+                  type: string
+  QuestionAnswerResponse:
+    type: object
+    properties:
+      answer:
+        type: string
+      confidence:
+        type: string

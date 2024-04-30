@@ -1,0 +1,17 @@
+.create-file-button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #5d9486b1;
+    color: #c6c6c6;
+    border: none;
+    border-radius: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-file-button:hover {
+    background-color: #5d9486;
+}

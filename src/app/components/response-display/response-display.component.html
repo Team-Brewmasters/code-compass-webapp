@@ -5,17 +5,14 @@
     </h1>
     <h3 class="subtitle">{{jsonResponse.repository.description}}</h3>
   </div>
-
-<app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
-
-<div class="grid-container">
-  <mat-grid-list cols="5" rowHeight="125px" gutterSize="15" style="height: 100%; width: 100%">
-    <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe"
-      [colspan]="item.col"
-      [rowspan]="item.row">
-      <app-card [cardContent]="item" style="height: 100%; width: 100%"></app-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
-
-
+  <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
+  <app-file-creation-buttons> </app-file-creation-buttons>
+  <app-architecture-diagram-display></app-architecture-diagram-display>
+  <div class="grid-container">
+    <mat-grid-list cols="5" rowHeight="125px" gutterSize="15" style="height: 100%; width: 100%">
+      <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe" [colspan]="item.col"
+        [rowspan]="item.row">
+        <app-card [cardContent]="item" style="height: 100%; width: 100%"></app-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
