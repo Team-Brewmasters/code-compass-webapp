@@ -1,6 +1,11 @@
 <div class="frosted-glass-card" *ngIf="cardContent">
   <div class="card-container">
-    <div *ngIf="cardContent.key === 'repository'" class="card"
+
+    <div class="card">
+      <h2>{{cardTitle}}</h2>
+      <div [appTypewriter]="cardContent" [delay]="5"></div>
+    </div>
+    <!-- <div *ngIf="cardContent.key === 'repository'" class="card"
     [appTypewriter]="'\<h2\>Repository Details\</h2\>' +
     '\<p\>\<strong>Name:\</strong\> '+ cardContent.value.name +' \</p\>' +
     '\<p\>\<strong\>Description:\</strong\> '+ cardContent.value.description + '\</p\>'" [delay]="5">
@@ -35,6 +40,6 @@
 
     <div *ngIf="cardContent.key === 'files'" class="card"
     [appTypewriter]="mockWriterForFiles(cardContent.value)"[delay]="5">
-    </div>
+    </div> -->
   </div>
 </div>

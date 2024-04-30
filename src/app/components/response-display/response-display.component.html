@@ -10,9 +10,23 @@
   <app-architecture-diagram-display></app-architecture-diagram-display>
   <div class="grid-container">
     <mat-grid-list cols="5" rowHeight="125px" gutterSize="15" style="height: 100%; width: 100%">
-      <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe" [colspan]="item.col"
+      <!-- <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe" [colspan]="item.col"
         [rowspan]="item.row">
-        <app-card [cardContent]="item" style="height: 100%; width: 100%"></app-card>
+        <app-card [cardType]="'security'" style="height: 100%; width: 100%"></app-card>
+        <app-card [cardType]="'optimization'" style="height: 100%; width: 100%"></app-card>
+      </mat-grid-tile> -->
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <app-card [cardType]="'security'" style="height: 100%; width: 100%"></app-card>
       </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <app-card [cardType]="'optimization'" style="height: 100%; width: 100%"></app-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <app-card [cardType]="'quality'" style="height: 100%; width: 100%"></app-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <app-card [cardType]="'architecture'" style="height: 100%; width: 100%"></app-card>
+      </mat-grid-tile>
+
     </mat-grid-list>
   </div>
