@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LambdaService } from './services/lambda.service';
-import { Observable } from 'rxjs';
+import { RepoSelectionService } from './services/repo-selection.service';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +13,19 @@ export class AppComponent {
   githubUrlInput = '';
   responseData: any;
 
-  constructor(private lambdaService: LambdaService) {}
+  hasLoadedData = false;
+
+  constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) {}
 
   onSubmit() {
     this.isSubmitted = true;
-    this.githubUrlInput = "https://www.github.com/Team-Brewmasters/code-compass-webapp";
-    this.callLambda();
+    this.callSummaryLambda();
   }
 
-  callLambda() {
+  callSummaryLambda() {
     this.githubUrl = "https://www.github.com/Team-Brewmasters/code-compass-webapp"
+    this.repoSelelectionService.selectRepo(this.githubUrlInput);
+
     this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(
       (response) => {
         this.responseData = JSON.parse(response);

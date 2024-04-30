@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { LambdaService } from '../services/lambda.service';
 import { Observable } from 'rxjs';
+import { LambdaService } from '../services/lambda.service';
+import { RepoSelectionService } from '../services/repo-selection.service';
 
 @Component({
   selector: 'app-response-display',
@@ -16,7 +17,8 @@ export class ResponseDisplayComponent {
   responseData$: Observable<any>;
 
 
-  constructor(private lambdaService: LambdaService) {
+
+  constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) {
     this.responseData$ = this.lambdaService.callSummaryLambda(this.githubUrl);
   }
 
