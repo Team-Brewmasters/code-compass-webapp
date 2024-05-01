@@ -6,15 +6,15 @@
       <div class="technology-icons">
         <ng-container *ngFor="let language of jsonResponse.repository.technology_stack.languages">
           <img *ngIf="svgMap[language.toLowerCase().replace('/\s/g', '')]" src="{{svgMap[language.toLowerCase().replace('/\s/g', '')]}}" alt="{{language}}" class="icon" height="25px" width="25px">
-          <span *ngIf="!svgMap[language.toLowerCase().replace('/\s/g', '')]">{{language}}</span>
+          <!-- <span *ngIf="!svgMap[language.toLowerCase().replace('/\s/g', '')]">{{language}}</span> -->
         </ng-container>
         <ng-container *ngFor="let framework of jsonResponse.repository.technology_stack.frameworks">
           <img *ngIf="svgMap[framework.toLowerCase().replace('/\s/g', '')]" src="{{svgMap[framework.toLowerCase().replace('/\s/g', '')]}}" alt="{{framework}}" class="icon" height="25px" width="25px">
-          <span *ngIf="!svgMap[framework.toLowerCase().replace('/\s/g', '')]">{{framework}}</span>
+          <!-- <span *ngIf="!svgMap[framework.toLowerCase().replace('/\s/g', '')]">{{framework}}</span> -->
         </ng-container>
         <ng-container *ngFor="let tool of jsonResponse.repository.technology_stack.tools">
           <img *ngIf="svgMap[tool.toLowerCase().replace('/\s/g', '')]" src="{{svgMap[tool.toLowerCase().replace('/\s/g', '')]}}" alt="{{tool}}" class="icon" height="25px" width="25px">
-        <span *ngIf="!svgMap[tool.toLowerCase().replace('/\s/g', '')]">{{tool}}</span>
+          <!-- <span *ngIf="!svgMap[tool.toLowerCase().replace('/\s/g', '')]">{{tool}}</span> -->
         </ng-container>
       </div>
     </div>
