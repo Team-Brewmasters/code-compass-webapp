@@ -40,8 +40,18 @@ export class CardComponent {
         });
 
         break;
-      case 'performance':
-        this.cardTitle = 'Performance';
+      case 'architecture':
+        this.cardTitle = 'Architecture';
+
+        if (this.repoSelectionService.getArchitectureRecommendation() != '') {
+          this.cardContent = this.repoSelectionService.getArchitectureRecommendation();
+          this.isLoaded = true;
+        }
+
+        this.repoSelectionService.architectureRecommendation$.subscribe((cardContent) => {
+          this.cardContent = cardContent;
+          this.isLoaded = true;
+        });
         break;
       case 'quality':
         this.cardTitle = 'Quality';
