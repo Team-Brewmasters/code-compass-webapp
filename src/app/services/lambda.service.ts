@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -12,8 +11,12 @@ export class LambdaService {
     private readonly askQuestionUrl = 'https://24lhekjptn2hjbrjukt6f4xqge0hrctk.lambda-url.us-east-1.on.aws/ ';
     private readonly fileGenerationUrl = 'https://tpimx374dlhzfsohjivqwsyuoy0yigdz.lambda-url.us-east-1.on.aws/';
     private readonly prSummaryUrl = 'https://3k77poexhjhtz74yzcfv7roezq0madng.lambda-url.us-east-1.on.aws/';
-
+    private readonly recentReposUrl = 'https://abc7clav5s7ruwkgilwvdyqnam0cnqef.lambda-url.us-east-1.on.aws/';
     constructor(private http: HttpClient) { }
+
+    callRecentReposLambda(): Observable<any> {
+        return this.http.get<any>(this.recentReposUrl);
+    }
 
     callSummaryLambda(githubUrl: string): Observable<any> {
         return this.http.get<any>(`${this.summaryUrl}?githubURL=${githubUrl}`);
@@ -28,8 +31,6 @@ export class LambdaService {
 
 
 
-        return of('{"answer": "Based on the repository content, here are some recommended security practices and considerations:\\n\\n1. **Use Local Libraries Instead of CDN:** The application uses external CDNs for scripts like Font Awesome and particles.js. To mitigate risks associated with CDN outages or security vulnerabilities, consider hosting these libraries locally.\\n\\n2. **Implement Content Security Policy (CSP):** Define and implement a CSP to avoid Cross-Site Scripting (XSS) attacks by restricting the sources from which content can be loaded.\\n\\n3. **Subresource Integrity (SRI):** Use SRI to ensure that resources fetched from external servers have not been tampered with. This is particularly important when including resources from external CDNs.\\n\\n4. **Sanitize User Inputs:** Since the application seems to manage user inputs (e.g., GitHub URLs and queries), ensure all inputs are sanitized to prevent injection attacks.\\n\\n5. **Secure Angular Routes:** Use route guards in Angular to secure routes that should not be accessible without proper authentication or authorization.\\n\\n6. **Update and Patch Dependencies:** Regularly update Angular and its dependencies to their latest versions to mitigate vulnerabilities found in older versions.\\n\\n7. **HTTPS for Backend Calls:** Ensure that all backend calls, such as those to AWS Lambda, are made over HTTPS to secure the data in transit.\\n\\n8. **Configuration Secrets Management:** Use environment variables or secure vault solutions to manage application secrets and configuration details rather than hardcoding them in the application.\\n\\n9. **Enable Angular\'s Built-in Sanitization:** Utilize Angular\'s built-in sanitization to protect against XSS vulnerabilities when binding data to the DOM.\\n\\n10. **HTTP Headers Security:** Configure security-related HTTP headers such as X-Frame-Options and X-Content-Type-Options to enhance security against clickjacking and MIME type sniffing attacks respectively.","confidence": "0.95"}').pipe(delay(2000) // Add a delay of 2000 milliseconds (2 seconds)
-        );
     }
 
     callFileGenerationLambda(githubUrl: string, fileType: string): Observable<any> {
