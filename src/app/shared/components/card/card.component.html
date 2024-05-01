@@ -1,6 +1,6 @@
-<div class="frosted-glass-card" *ngIf="cardContent">
+ <div class="frosted-glass-card" *ngIf="cardContent" [ngClass]="{'expanded': expanded}">
   <div class="card-container">
-    <div *ngIf="cardContent.key === 'repository'" class="card"
+    <!--<div *ngIf="cardContent.key === 'repository'" class="card"
     [appTypewriter]="'\<h2\>Repository Details\</h2\>' +
     '\<p\>\<strong>Name:\</strong\> '+ cardContent.value.name +' \</p\>' +
     '\<p\>\<strong\>Description:\</strong\> '+ cardContent.value.description + '\</p\>'" [delay]="5">
@@ -28,7 +28,14 @@
     </div>
 
     <div *ngIf="cardContent.key === 'files'" class="card"
-    [appTypewriter]="mockWriterForFiles(cardContent.value)"[delay]="5">
+    [appTypewriter]="mockWriterForFiles(cardContent.value)"[delay]="5"> -->
+    <div class="card" [ngClass]="{'expanded': expanded}">
+      <h2>{{cardTitle}}</h2>
+      <div class="card-content">
+        <div [appTypewriter]="cardContent" [delay]="5"></div>
+      </div>
+      <button class="view-more-btn" *ngIf="!expanded && hasMoreContent" (click)="toggleExpanded()">View More</button>
+      <button class="close-btn" *ngIf="expanded" (click)="toggleExpanded()">Close</button>
     </div>
   </div>
 </div>

@@ -14,26 +14,22 @@ export class ArchitectureDiagramDisplayComponent {
 
   githubUrl: string = '';
   ngOnInit() {
-    this.githubUrl = this.repoSelectionService.getSelectedRepo();
+    // this.githubUrl = this.repoSelectionService.getSelectedRepo();
 
-    this.repoSelectionService.selectedRepo$.subscribe(repoUrl => {
-      this.githubUrl = repoUrl;
+    if (this.repoSelectionService.getArchitectureDiagramUrl() != '') {
+      this.fileUrl = this.repoSelectionService.getArchitectureDiagramUrl();
+    }
+
+    this.repoSelectionService.architectureDiagramUrl$.subscribe(architectureDiagramUrl => {
+      this.fileUrl = architectureDiagramUrl;
     });
 
-    this.downloadDiagram();
+    // this.repoSelectionService.selectedRepo$.subscribe(repoUrl => {
+    //   this.githubUrl = repoUrl;
+    // });
+
+    // this.downloadDiagram();
   }
 
-  downloadDiagram() {
-    this.lambdaService.callFileGenerationLambda(this.githubUrl, 'architecture').subscribe(
-      (response) => {
-        this.fileUrl = response.preSignedUrl;
-        // window.open(fileUrl, '_blank');
-      },
-      (error) => {
-        console.error('Error calling Lambda:', error);
-        // show dialog
-        alert('Error creating architecture diagram.');
-      }
-    );
-  }
+
 }

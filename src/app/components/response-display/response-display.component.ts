@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { LambdaService } from '../../services/lambda.service';
 import { RepoSelectionService } from '../../services/repo-selection.service';
 
@@ -14,12 +13,14 @@ export class ResponseDisplayComponent {
   userInput: string = '';
   questionResponse: string = '';
   confidence: string = '';
-  responseData$: Observable<any>;
 
 
 
   constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) {
-    this.responseData$ = this.lambdaService.callSummaryLambda(this.githubUrl);
+  }
+
+  ngOnInit(): void {
+    // this.responseData$ = this.repoSelelectionService.getSummaryData();
   }
 
   selectQuestion(question: string) {

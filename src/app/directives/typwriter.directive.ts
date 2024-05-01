@@ -13,17 +13,25 @@ export class TypewriterDirective implements OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if (changes['text']) {
             this.el.nativeElement.innerHTML = '';
-            this.typewriterEffect(changes['text'].currentValue);
+            this.parseMarkdown(changes['text'].currentValue);
         }
     }
 
-    typewriterEffect(text: string) {
+    private async parseMarkdown(text: string) {
+        try {
+            const parsedHtml = await this.markdownService.parse(text);
+            this.typewriterEffect(parsedHtml);
+        } catch (error) {
+            console.error('Error parsing markdown:', error);
+        }
+    }
+
+    private typewriterEffect(parsedHtml: string) {
         let i = 0;
         const typing = () => {
-            if (i < text.length) {
-                const currentText = text.slice(0, i + 1);
-                const html = this.markdownService.parse(currentText);
-                this.el.nativeElement.innerHTML = html;
+            if (i < parsedHtml.length) {
+                const currentHtml = parsedHtml.slice(0, i + 1);
+                this.el.nativeElement.innerHTML = currentHtml;
                 i++;
                 setTimeout(typing, this.delay);
             }

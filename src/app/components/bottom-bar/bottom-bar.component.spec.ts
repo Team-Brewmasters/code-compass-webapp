@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FileCreationButtonsComponent } from './file-creation-buttons.component';
+import { FileCreationButtonsComponent } from './bottom-bar.component';
 
 describe('FileCreationButtonsComponent', () => {
   let component: FileCreationButtonsComponent;
@@ -10,8 +10,8 @@ describe('FileCreationButtonsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [FileCreationButtonsComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(FileCreationButtonsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

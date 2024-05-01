@@ -1,18 +1,20 @@
 <div *ngIf="jsonResponse" class="repository-details">
   <div class="page-header">
-    <h1 class="page-title">
-      {{ jsonResponse.repository.name }}
-    </h1>
+    <h1 class="page-title">{{ jsonResponse.repository.name }}</h1>
     <h3 class="subtitle">{{jsonResponse.repository.description}}</h3>
   </div>
+
   <app-ask-question [suggestedQuestions]="jsonResponse.suggestedQuestions"></app-ask-question>
-  <app-file-creation-buttons> </app-file-creation-buttons>
+  <app-bottom-bar></app-bottom-bar>
   <app-architecture-diagram-display></app-architecture-diagram-display>
+
   <div class="grid-container">
-    <mat-grid-list cols="5" rowHeight="125px" gutterSize="15" style="height: 100%; width: 100%">
-      <mat-grid-tile *ngFor="let item of jsonResponse | keyvalue | summaryDataPipe" [colspan]="item.col"
-        [rowspan]="item.row">
-        <app-card [cardContent]="item" style="height: 100%; width: 100%"></app-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+
+    <div class="card-grid">
+      <app-card [cardType]="'security'" class="card-item"></app-card>
+      <app-card [cardType]="'optimization'" class="card-item"></app-card>
+      <app-card [cardType]="'quality'" class="card-item"></app-card>
+      <app-card [cardType]="'architecture'" class="card-item"></app-card>
+    </div>
   </div>
+</div>
