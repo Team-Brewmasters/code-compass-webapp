@@ -36,8 +36,8 @@
       </div>
       <div class="view-more-container">
         <button class="view-more-btn" *ngIf="!expanded && hasMoreContent" (click)="toggleExpanded()">View More</button>
+        <button class="close-btn" *ngIf="expanded" (click)="toggleExpanded()">Close</button>
       </div>
-      <button class="close-btn" *ngIf="expanded" (click)="toggleExpanded()">Close</button>
     </div>
   </div>
 </div>
