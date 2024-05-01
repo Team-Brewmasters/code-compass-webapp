@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
+import { RiveModule } from 'ng-rive';
 import { MarkdownModule } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { ArchitectureDiagramDisplayComponent } from './architecture-diagram-display/architecture-diagram-display.component';
@@ -25,6 +26,6 @@ import { SummaryDataPipePipe } from './shared/pipe/summary-data-pipe.pipe';
     declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonComponent, ArchitectureDiagramDisplayComponent, CardComponent, PrCardComponent, PrButtonComponent, BottomBarComponent],
     providers: [LambdaService, RepoSelectionService],
     bootstrap: [AppComponent],
-    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), MatGridListModule, SummaryDataPipePipe]
+    imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), MatGridListModule, SummaryDataPipePipe, RiveModule]
 })
 export class AppModule { }

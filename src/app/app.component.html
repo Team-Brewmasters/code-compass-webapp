@@ -128,12 +128,28 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
+
+  .logo-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .logo-container.fade-out {
+    opacity: 0;
+  }
 </style>
 <app-particles></app-particles>
 
 <main class="main">
-
+  <canvas class="logo-container" riv="untitled" width="500" height="500" [class.fade-out]="isSubmitted">
+    <riv-animation name="Timeline 1" play></riv-animation>
+  </canvas>
   <div class="content" [class.submitted]="isSubmitted">
+
     <div *ngIf="!responseData" class="input-container">
       <input class="input-field" type="text" placeholder="Enter GitHub URL..." [(ngModel)]="githubUrl"
         (keyup.enter)="onSubmit()">
