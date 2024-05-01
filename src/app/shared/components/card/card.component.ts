@@ -1,22 +1,35 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { getIconMap } from '../../models/repository';
 
 @Component({
   selector: 'app-card',
   standalone: false,
   templateUrl: './card.component.html',
-  styleUrl: './card.component.scss',
+  styleUrl: './card.component.scss'
 })
 export class CardComponent {
   @Input() cardTitle: string = '';
   
   @Input() cardContent: any;
+
+  icons: string[] = [];
   constructor() {
     
   }
 
-  ngOnInit(): void {
-    console.log(this.cardContent);
+
+  mockWriterForTechStack(cardContent: any): string {
+    let html = '';
+    
+    html += '\<h3\>Technology Stack\</h3\>';
+    html += '\<ul\>';
+    html += '\<li\>\<strong\>Languages:\</strong\> ' + cardContent.technology_stack.languages.join(', ') + '\</li\>';
+    html += '\<li\>\<strong\>Frameworks:\</strong\> ' + cardContent.technology_stack.frameworks.join(', ') + '\</li\>';
+    html += '\<li\>\<strong\>Databases:\</strong\> ' + cardContent.technology_stack.databases.join(', ') + '\</li\>';
+    html += '\<li\>\<strong\>Tools:\</strong\> ' + cardContent.technology_stack.tools.join(', ') + '\</li\>';
+    html += '\<ul\>';
+  
+    return html;
   }
 
   mockWriterForOverview(component: { name: string; description: string; }, cardContent: { value: { architecture: {
@@ -126,4 +139,25 @@ export class CardComponent {
   
     return html;
   }
+
+  // filterStrings(arr: any[] ) {
+  //   const filteredArray = [];
+  //   const map = getIconMap();
+  //   for (let i = 0; i < arr.length; i++) {
+  //     const string = arr[i];
+  
+  //     for (const key in map) {
+  //       if (string.toLowerCase() === key) {
+  //         filteredArray.push(map[key]);
+  //         break;
+  //       }
+  //     }
+  
+  //     if (!filteredArray.includes(string)) {
+  //       filteredArray.push(string);
+  //     }
+  //   }
+  
+  //   return filteredArray;
+  // }
 }

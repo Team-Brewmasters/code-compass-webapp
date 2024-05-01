@@ -7,13 +7,7 @@
     </div>
 
     <div *ngIf="cardContent.key === 'technology_stack'" class="card"
-    [appTypewriter]="'\<h3\>Technology Stack\</h3\>' +
-    '\<ul\>' +
-      '\<li\>\<strong\>Languages:\</strong\> ' + cardContent.value.technology_stack.languages.join(', ') + '\</li\>' +
-      '\<li\>\<strong\>Frameworks:\</strong\> ' + cardContent.value.technology_stack.frameworks.join(', ') + '\</li\>' + 
-      '\<li\>\<strong\>Databases:\</strong\> ' + cardContent.value.technology_stack.databases.join(', ') + '\</li\>' +
-      '\<li\>\<strong\>Tools:\</strong\> ' + cardContent.value.technology_stack.tools.join(', ') + '\</li\>' +
-    '\</ul\>'" [delay]="5">    
+    [appTypewriter]="mockWriterForTechStack(cardContent.value)" [delay]="5">    
     </div>
 
     <div *ngIf="cardContent.key === 'overview'" class="card" 
