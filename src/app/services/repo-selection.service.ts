@@ -24,6 +24,9 @@ export class RepoSelectionService {
     private architectureDiagramUrl = new BehaviorSubject<string>('');
     architectureDiagramUrl$ = this.architectureDiagramUrl.asObservable();
 
+    private pullRequestInfo = new BehaviorSubject<any>({});
+    pullRequestInfo$ = this.pullRequestInfo.asObservable();
+
 
     constructor(private lambdaService: LambdaService) { }
 
@@ -56,6 +59,10 @@ export class RepoSelectionService {
 
     getArchitectureDiagramUrl() {
         return this.architectureDiagramUrl.getValue();
+    }
+
+    getPullRequestInfo() {
+        return this.pullRequestInfo.getValue();
     }
 
     retrieveRecommendations() {
@@ -102,6 +109,15 @@ export class RepoSelectionService {
         this.lambdaService.callFileGenerationLambda(this.getSelectedRepo(), 'architecture').subscribe(
             (response) => {
                 this.architectureDiagramUrl.next(response.preSignedUrl);
+            },
+            (error) => {
+                console.error('Error calling Lambda:', error);
+            }
+        );
+
+        this.lambdaService.callPRSummaryLambda(this.getSelectedRepo()).subscribe(
+            (response) => {
+                this.pullRequestInfo.next(response);
             },
             (error) => {
                 console.error('Error calling Lambda:', error);

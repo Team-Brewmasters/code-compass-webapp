@@ -14,13 +14,15 @@ import { FileCreationButtonsComponent } from './components/file-creation-buttons
 import { ResponseDisplayComponent } from './components/response-display/response-display.component';
 import { TypewriterDirective } from './directives/typwriter.directive';
 import { ParticlesComponent } from './particles/particles.component';
+import { PrButtonComponent } from './pr-button/pr-button.component';
+import { PrCardComponent } from './pr-card/pr-card.component';
 import { LambdaService } from './services/lambda.service';
 import { RepoSelectionService } from './services/repo-selection.service';
 import { CardComponent } from "./shared/components/card/card.component";
 import { SummaryDataPipePipe } from './shared/pipe/summary-data-pipe.pipe';
 
 @NgModule({
-    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonsComponent, FileCreationButtonComponent, ArchitectureDiagramDisplayComponent, CardComponent],
+    declarations: [AppComponent, ParticlesComponent, ResponseDisplayComponent, AskQuestionComponent, TypewriterDirective, FileCreationButtonsComponent, FileCreationButtonComponent, ArchitectureDiagramDisplayComponent, CardComponent, PrCardComponent, PrButtonComponent],
     providers: [LambdaService, RepoSelectionService],
     bootstrap: [AppComponent],
     imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, MarkdownModule.forRoot(), MatGridListModule, SummaryDataPipePipe]
