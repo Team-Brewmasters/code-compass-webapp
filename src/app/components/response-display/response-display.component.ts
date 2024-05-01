@@ -19,7 +19,7 @@ export class ResponseDisplayComponent {
 
 
   constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) {
-    this.responseData$ = this.lambdaService.callSummaryLambda(this.githubUrl);
+    // this.responseData$ = this.lambdaService.callSummaryLambda(this.githubUrl);
   }
 
   selectQuestion(question: string) {
