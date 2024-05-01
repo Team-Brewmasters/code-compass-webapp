@@ -3,7 +3,7 @@
 
     <div class="card">
       <h2>{{cardTitle}}</h2>
-      <div [appTypewriter]="cardContent" [delay]="5"></div>
+      <div *ngIf="false" [appTypewriter]="cardContent" [delay]="5"></div>
     </div>
     <!-- <div *ngIf="cardContent.key === 'repository'" class="card"
     [appTypewriter]="'\<h2\>Repository Details\</h2\>' +
