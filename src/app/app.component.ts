@@ -35,6 +35,7 @@ export class AppComponent {
           console.log('Lambda response:', response);
         },
         (error) => {
+          this.isSubmitted = false;
           alert('Error 3retrieving data. Please try again later.');
           this.isLoading = false;
           console.error('Error calling Lambda:', error);
