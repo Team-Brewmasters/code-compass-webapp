@@ -5,15 +5,15 @@
     <div class="icon-container">
       <div class="technology-icons">
         <ng-container *ngFor="let language of jsonResponse.repository.technology_stack.languages">
-          <img *ngIf="svgMap[language.toLowerCase().replace('/\s/g', '')]" src="{{svgMap[language.toLowerCase().replace('/\s/g', '')]}}" alt="{{language}}" class="icon" height="25px" width="25px">
+          <img *ngIf="svgMap[removeWhitespace(language.toLowerCase())]" src="{{svgMap[removeWhitespace(language.toLowerCase())]}}" alt="{{language}}" title="{{language}}" class="icon" height="25px" width="25px">
           <!-- <span *ngIf="!svgMap[language.toLowerCase().replace('/\s/g', '')]">{{language}}</span> -->
         </ng-container>
         <ng-container *ngFor="let framework of jsonResponse.repository.technology_stack.frameworks">
-          <img *ngIf="svgMap[framework.toLowerCase().replace('/\s/g', '')]" src="{{svgMap[framework.toLowerCase().replace('/\s/g', '')]}}" alt="{{framework}}" class="icon" height="25px" width="25px">
+          <img *ngIf="svgMap[removeWhitespace(framework.toLowerCase())]" src="{{svgMap[removeWhitespace(framework.toLowerCase())]}}" alt="{{framework}}" title="{{framework}}" class="icon" height="25px" width="25px">
           <!-- <span *ngIf="!svgMap[framework.toLowerCase().replace('/\s/g', '')]">{{framework}}</span> -->
         </ng-container>
         <ng-container *ngFor="let tool of jsonResponse.repository.technology_stack.tools">
-          <img *ngIf="svgMap[tool.toLowerCase().replace('/\s/g', '')]" src="{{svgMap[tool.toLowerCase().replace('/\s/g', '')]}}" alt="{{tool}}" class="icon" height="25px" width="25px">
+          <img *ngIf="svgMap[removeWhitespace(tool.toLowerCase())]" src="{{svgMap[removeWhitespace(tool.toLowerCase())]}}" alt="{{tool}}" title="{{tool}}" class="icon" height="25px" width="25px">
           <!-- <span *ngIf="!svgMap[tool.toLowerCase().replace('/\s/g', '')]">{{tool}}</span> -->
         </ng-container>
       </div>

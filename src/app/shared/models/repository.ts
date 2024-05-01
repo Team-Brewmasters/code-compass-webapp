@@ -42,7 +42,7 @@ interface RepositoryBaseDetails {
 
 export function getIconMap() {
   return {
-    "amazonwebservices":"/assets/icons/amazonwebservices.svg",
+    "awslambda":"/assets/icons/amazonwebservices.svg",
     "angular":"/assets/icons/angular.svg",
     "angularmaterial":"/assets/icons/angularmaterial.svg",
     "azure":"/assets/icons/azure.svg",
@@ -51,11 +51,12 @@ export function getIconMap() {
     "css":"/assets/icons/css.svg",
     "cucumber":"/assets/icons/cucumber.svg",
     "docker":"/assets/icons/docker.svg",
-    "dynamodb":"/assets/icons/dynamodb.svg",
+    "awsdynamodb":"/assets/icons/dynamodb.svg",
     "firebase":"/assets/icons/firebase.svg",
     "flutter":"/assets/icons/flutter.svg",
     "git":"/assets/icons/git.svg",
     "github":"/assets/icons/github.svg",
+    "githubactions":"/assets/icons/githubactions.svg",
     "googlecloud":"/assets/icons/googlecloud.svg",
     "html":"/assets/icons/html.svg",
     "jasmine":"/assets/icons/jasmine.svg",

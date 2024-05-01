@@ -55,4 +55,8 @@ export class ResponseDisplayComponent {
       return 'low-confidence';
     }
   }
+
+  removeWhitespace(string: string): string {
+    return string.split(' ').join('');
+  }
 }
