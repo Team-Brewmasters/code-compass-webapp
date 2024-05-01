@@ -14,10 +14,24 @@ export class AppComponent {
   responseData: any;
   isLoading = false;
 
+  recentReposList: any;
+
 
   hasLoadedData = false;
 
   constructor(private lambdaService: LambdaService, private repoSelelectionService: RepoSelectionService) { }
+
+  ngOnInit() {
+    this.lambdaService.callRecentReposLambda().subscribe(
+      (response) => {
+        console.log('Recent repos:', response);
+        this.recentReposList = response.recentSearches;
+      },
+      (error) => {
+        console.error('Error calling Lambda:', error);
+      }
+    );
+  }
 
   onSubmit() {
     this.isSubmitted = true;
@@ -44,5 +58,5 @@ export class AppComponent {
     }
   }
 
-  
+
 }

@@ -63,6 +63,33 @@
     background-color: rgba(92, 92, 92, 0.8);
   }
 
+  .recent-repos-container {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: #ffffff00;
+    /* Adjust background color as needed */
+  }
+
+  .recent-repos-button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background-color: #4646464e;
+    color: rgb(216, 216, 216);
+    backdrop-filter: blur(10px);
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .recent-repos-button:hover {
+    background-color: #7373738f;
+  }
+
   .send-icon {
     position: absolute;
     top: 50%;
@@ -136,6 +163,7 @@
     transform: translateX(-50%);
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+    backdrop-filter: blur(10px);
   }
 
   .logo-container.fade-out {
@@ -159,6 +187,11 @@
   </div>
   <div *ngIf="responseData" class="response-container" [class.show]="responseData">
     <app-response-display [jsonResponse]="responseData" [githubUrl]="githubUrl"></app-response-display>
+  </div>
+  <div *ngIf="!isSubmitted" class="recent-repos-container">
+    <button class='recent-repos-button' *ngFor="let url of recentReposList" (click)="githubUrl = url; onSubmit()">
+      {{ url }}
+    </button>
   </div>
 </main>
 <router-outlet></router-outlet>
