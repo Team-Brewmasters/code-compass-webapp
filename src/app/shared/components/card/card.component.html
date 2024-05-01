@@ -3,43 +3,7 @@
 
     <div class="card">
       <h2>{{cardTitle}}</h2>
-      <div *ngIf="false" [appTypewriter]="cardContent" [delay]="5"></div>
+      <div [appTypewriter]="cardContent" [delay]="5"></div>
     </div>
-    <!-- <div *ngIf="cardContent.key === 'repository'" class="card"
-    [appTypewriter]="'\<h2\>Repository Details\</h2\>' +
-    '\<p\>\<strong>Name:\</strong\> '+ cardContent.value.name +' \</p\>' +
-    '\<p\>\<strong\>Description:\</strong\> '+ cardContent.value.description + '\</p\>'" [delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'technology_stack'" class="card"
-    [appTypewriter]="'\<h3\>Technology Stack\</h3\>' +
-    '\<ul\>' +
-      '\<li\>\<strong\>Languages:\</strong\> ' + cardContent.value.technology_stack.languages.join(', ') + '\</li\>' +
-      '\<li\>\<strong\>Frameworks:\</strong\> ' + cardContent.value.technology_stack.frameworks.join(', ') + '\</li\>' + 
-      '\<li\>\<strong\>Databases:\</strong\> ' + cardContent.value.technology_stack.databases.join(', ') + '\</li\>' +
-      '\<li\>\<strong\>Tools:\</strong\> ' + cardContent.value.technology_stack.tools.join(', ') + '\</li\>' +
-    '\</ul\>'" [delay]="5">    
-    </div>
-
-    <div *ngIf="cardContent.key === 'overview'" class="card" 
-    [appTypewriter]="mockWriterForOverview(cardContent.value, cardContent)" [delay]="5">
-      
-    </div>
-
-    <div *ngIf="cardContent.key === 'security'" class="card"
-    [appTypewriter]="mockWriterForSecurity(cardContent.value)"[delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'performance'" class="card"
-    [appTypewriter]="mockWriterForPerformance(cardContent.value)"[delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'code_analysis'" class="card"
-    [appTypewriter]="mockWriterForCodeAnalysis(cardContent.value)"[delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'files'" class="card"
-    [appTypewriter]="mockWriterForFiles(cardContent.value)"[delay]="5">
-    </div> -->
   </div>
 </div>
