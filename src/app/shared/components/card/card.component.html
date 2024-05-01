@@ -1,34 +1,5 @@
  <div class="frosted-glass-card" *ngIf="cardContent" [ngClass]="{'expanded': expanded}">
   <div class="card-container">
-    <!--<div *ngIf="cardContent.key === 'repository'" class="card"
-    [appTypewriter]="'\<h2\>Repository Details\</h2\>' +
-    '\<p\>\<strong>Name:\</strong\> '+ cardContent.value.name +' \</p\>' +
-    '\<p\>\<strong\>Description:\</strong\> '+ cardContent.value.description + '\</p\>'" [delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'technology_stack'" class="card"
-    [appTypewriter]="mockWriterForTechStack(cardContent.value)" [delay]="5">    
-    </div>
-
-    <div *ngIf="cardContent.key === 'overview'" class="card" 
-    [appTypewriter]="mockWriterForOverview(cardContent.value, cardContent)" [delay]="5">
-      
-    </div>
-
-    <div *ngIf="cardContent.key === 'security'" class="card"
-    [appTypewriter]="mockWriterForSecurity(cardContent.value)"[delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'performance'" class="card"
-    [appTypewriter]="mockWriterForPerformance(cardContent.value)"[delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'code_analysis'" class="card"
-    [appTypewriter]="mockWriterForCodeAnalysis(cardContent.value)"[delay]="5">
-    </div>
-
-    <div *ngIf="cardContent.key === 'files'" class="card"
-    [appTypewriter]="mockWriterForFiles(cardContent.value)"[delay]="5"> -->
     <div class="card" [ngClass]="{'expanded': expanded}">
       <h2>{{cardTitle}}</h2>
       <div class="card-content">

@@ -36,6 +36,7 @@ export class CardComponent {
 
         if (this.repoSelectionService.getSecurityRecommendation() != '') {
           this.cardContent = this.repoSelectionService.getSecurityRecommendation();
+          console.log(this.cardContent);
           this.checkMoreContent();
           this.isLoaded = true;
         }
@@ -222,25 +223,4 @@ export class CardComponent {
 
     return html;
   }
-
-  // filterStrings(arr: any[] ) {
-  //   const filteredArray = [];
-  //   const map = getIconMap();
-  //   for (let i = 0; i < arr.length; i++) {
-  //     const string = arr[i];
-  
-  //     for (const key in map) {
-  //       if (string.toLowerCase() === key) {
-  //         filteredArray.push(map[key]);
-  //         break;
-  //       }
-  //     }
-  
-  //     if (!filteredArray.includes(string)) {
-  //       filteredArray.push(string);
-  //     }
-  //   }
-  
-  //   return filteredArray;
-  // }
 }
