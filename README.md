@@ -1,7 +1,7 @@
 # Code Compass
 
 
-https://code-compass-webapp-ei0prgaum-team-brewmasters.vercel.app
+https://code-compass-app.vercel.app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
