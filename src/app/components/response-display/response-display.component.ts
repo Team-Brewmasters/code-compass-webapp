@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { LambdaService } from '../../services/lambda.service';
 import { RepoSelectionService } from '../../services/repo-selection.service';
 

@@ -12,6 +12,7 @@ export class AppComponent {
   githubUrl = '';
   githubUrlInput = '';
   responseData: any;
+  isLoading = false;
 
 
   hasLoadedData = false;
@@ -24,15 +25,21 @@ export class AppComponent {
   }
 
   callSummaryLambda() {
-    this.repoSelelectionService.selectRepo(this.githubUrl);
-    this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(
-      (response) => {
-        this.responseData = response;
-        console.log('Lambda response:', response);
-      },
-      (error) => {
-        console.error('Error calling Lambda:', error);
-      }
-    );
+    if (!this.isLoading && this.githubUrl != "") {
+      this.isLoading = true;
+      this.repoSelelectionService.selectRepo(this.githubUrl);
+      this.lambdaService.callSummaryLambda(this.githubUrl).subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.responseData = response;
+          console.log('Lambda response:', response);
+        },
+        (error) => {
+          alert('Error 3retrieving data. Please try again later.');
+          this.isLoading = false;
+          console.error('Error calling Lambda:', error);
+        }
+      );
+    }
   }
 }
