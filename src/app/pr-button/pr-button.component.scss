@@ -1,0 +1,20 @@
+.pr-button {
+    padding: 10px 30px;
+    margin: 10px;
+    // height: 40px;
+
+    padding: 10px 15px;
+    background-color: #eb101060;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 18px;
+}
+
+.pr-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

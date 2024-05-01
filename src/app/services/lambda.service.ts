@@ -39,5 +39,13 @@ export class LambdaService {
 
     callPRSummaryLambda(githubUrl: string): Observable<any> {
         return this.http.get<any>(`${this.prSummaryUrl}?githubURL=${githubUrl}`);
+
+        // return of({
+        //     decision: "Approved",
+        //     reasoning: "The codebase is well-structured and follows best practices. The code quality is high, and the architecture is scalable and maintainable. The security vulnerabilities are minimal, and the performance is optimal. The documentation is comprehensive, and the codebase is well-commented. The API documentation is clear and concise. The suggested questions are relevant and insightful. The repository is well-maintained and actively developed. The pull request is approved.",
+        //     diffUrl: "github.com",
+        //     branch: "main"
+
+        // })
     }
 }

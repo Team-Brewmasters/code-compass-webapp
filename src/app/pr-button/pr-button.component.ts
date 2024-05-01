@@ -11,25 +11,48 @@ export class PrButtonComponent {
   constructor(private repoSelectionService: RepoSelectionService) { }
 
   pullRequestInfo: any = {};
-
+  isLoaded: boolean = false;
   prBoxClass: string = 'hide-pr-box';
   isOpen: boolean = false;
 
+  hasPRInfo: boolean = false;
+
+
   ngOnInit() {
-    this.pullRequestInfo = this.repoSelectionService.getPullRequestInfo();
+    if (this.repoSelectionService.getPullRequestInfo() !== null) {
+
+
+      this.isLoaded = true;
+      this.pullRequestInfo = this.repoSelectionService.getPullRequestInfo();
+
+      if (this.pullRequestInfo && this.pullRequestInfo.decision !== null) {
+        if (Object.keys(this.pullRequestInfo).length !== 0) {
+          this.hasPRInfo = true;
+        }
+      }
+    }
 
     this.repoSelectionService.pullRequestInfo$.subscribe((pullRequestInfo) => {
+      this.isLoaded = true;
       this.pullRequestInfo = pullRequestInfo;
+
+      if (this.pullRequestInfo && this.pullRequestInfo.decision !== null) {
+        if (Object.keys(this.pullRequestInfo).length !== 0)
+          this.hasPRInfo = true;
+      }
     });
+
+    this.repoSelectionService.prVisibility$.subscribe((visibility) => {
+      this.isOpen = visibility;
+    });
+
+
   }
 
+
+
   showPullRequestInfo() {
-    if (this.pullRequestInfo && !this.isOpen) {
-      this.isOpen = true;
-      this.prBoxClass = 'show-pr-box';
-    } else {
-      this.isOpen = false;
-      this.prBoxClass = 'hide-pr-box';
-    }
+    this.repoSelectionService.togglePRVisibility();
   }
+
 }

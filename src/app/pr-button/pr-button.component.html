@@ -1,3 +1,5 @@
-<div *ngIf="pullRequestInfo.diff_url" (click)="showPullRequestInfo()">View Latest Pull Request</div>
-<div *ngIf="!pullRequestInfo.diff_url">Loading Pull Request Information...</div>
-<app-pr-card *ngIf="pullRequestInfo.diff_url" [pullRequestInfo]="pullRequestInfo" [ngClass]="prBoxClass"></app-pr-card>
+<button *ngIf="isLoaded && hasPRInfo" (click)="showPullRequestInfo()" class="pr-button">View Latest Pull
+    Request</button>
+<button *ngIf="isLoaded && !hasPRInfo" class="pr-button">No PR Available</button>
+
+<button *ngIf="!isLoaded" class="pr-button">Loading Pull Request Information...</button>

@@ -1,3 +1,12 @@
-<div>
-    {{pullRequestInfo | json}}
+<div *ngIf="isLoaded && hasPRInfo" class="pr-container" [ngClass]="class">
+    <div class="pr-card">
+        <div class="pr-header">
+            <h3>{{ pullRequestInfo.branch }}</h3>
+            <h4>{{ pullRequestInfo.decision }}</h4>
+            <a href="{{ pullRequestInfo.diffUrl }}" class="pr-link">{{pullRequestInfo.diffUrl}}</a>
+        </div>
+        <div class="pr-reasoning">
+            <div [appTypewriter]="pullRequestInfo.reasoning" [delay]="5"></div>
+        </div>
+    </div>
 </div>

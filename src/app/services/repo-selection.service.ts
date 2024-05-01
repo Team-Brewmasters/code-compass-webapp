@@ -24,8 +24,12 @@ export class RepoSelectionService {
     private architectureDiagramUrl = new BehaviorSubject<string>('');
     architectureDiagramUrl$ = this.architectureDiagramUrl.asObservable();
 
-    private pullRequestInfo = new BehaviorSubject<any>({});
+    private pullRequestInfo = new BehaviorSubject<any>(null);
     pullRequestInfo$ = this.pullRequestInfo.asObservable();
+
+    private prVisibility = new BehaviorSubject<boolean>(false);
+    prVisibility$ = this.prVisibility.asObservable();
+
 
 
     constructor(private lambdaService: LambdaService) { }
@@ -63,6 +67,14 @@ export class RepoSelectionService {
 
     getPullRequestInfo() {
         return this.pullRequestInfo.getValue();
+    }
+
+    setPullRequestInfo(info: any) {
+        this.pullRequestInfo.next(info);
+    }
+
+    togglePRVisibility() {
+        this.prVisibility.next(!this.prVisibility.value);
     }
 
     retrieveRecommendations() {
