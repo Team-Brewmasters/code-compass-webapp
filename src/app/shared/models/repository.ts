@@ -43,7 +43,7 @@ interface Cards {
 export function getIconMap() {
   return {
     "awslambda": "/assets/icons/amazonwebservices.svg",
-    "angular": "/assets/icons/a.svg",
+    "angular": "/assets/icons/html1.svg",
     "angularmaterial": "/assets/icons/angularmaterial.svg",
     "azure": "/assets/icons/azure.svg",
     "bitbucket": "/assets/icons/bitbucket.svg",
