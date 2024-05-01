@@ -132,8 +132,11 @@
 <app-particles></app-particles>
 
 <main class="main">
-
+  <canvas riv="untitled" width="500" height="500">
+    <riv-animation name="Timeline 1" play></riv-animation>
+  </canvas>
   <div class="content" [class.submitted]="isSubmitted">
+
     <div *ngIf="!responseData" class="input-container">
       <input class="input-field" type="text" placeholder="Enter GitHub URL..." [(ngModel)]="githubUrl"
         (keyup.enter)="onSubmit()">
