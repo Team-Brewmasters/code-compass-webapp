@@ -8,6 +8,20 @@
   padding: 20px;
 }
 
+.icon-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.technology-icons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

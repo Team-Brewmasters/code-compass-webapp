@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { LambdaService } from '../../services/lambda.service';
 import { RepoSelectionService } from '../../services/repo-selection.service';
+import { getIconMap } from '../../shared/models/repository';
 
 @Component({
   selector: 'app-response-display',
@@ -13,6 +14,7 @@ export class ResponseDisplayComponent {
   userInput: string = '';
   questionResponse: string = '';
   confidence: string = '';
+  svgMap: any;
 
 
 
@@ -21,6 +23,7 @@ export class ResponseDisplayComponent {
 
   ngOnInit(): void {
     // this.responseData$ = this.repoSelelectionService.getSummaryData();
+    this.svgMap = getIconMap();
   }
 
   selectQuestion(question: string) {
