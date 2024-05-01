@@ -11,9 +11,10 @@ import { RepoSelectionService } from '../../../services/repo-selection.service';
 export class CardComponent {
   @Input() cardType: string = '';
   cardTitle: string = '';
-  isLoaded = false;
-
   cardContent: any;
+  expanded = false;
+  hasMoreContent = false;
+  isLoaded = false;
   constructor(private repoSelectionService: RepoSelectionService, private lambdaService: LambdaService) {
 
   }
@@ -31,11 +32,13 @@ export class CardComponent {
 
         if (this.repoSelectionService.getSecurityRecommendation() != '') {
           this.cardContent = this.repoSelectionService.getSecurityRecommendation();
+          this.checkMoreContent();
           this.isLoaded = true;
         }
 
         this.repoSelectionService.securityRecommendation$.subscribe((cardContent) => {
           this.cardContent = cardContent;
+          this.checkMoreContent();
           this.isLoaded = true;
         });
 
@@ -45,11 +48,13 @@ export class CardComponent {
 
         if (this.repoSelectionService.getArchitectureRecommendation() != '') {
           this.cardContent = this.repoSelectionService.getArchitectureRecommendation();
+          this.checkMoreContent();
           this.isLoaded = true;
         }
 
         this.repoSelectionService.architectureRecommendation$.subscribe((cardContent) => {
           this.cardContent = cardContent;
+          this.checkMoreContent();
           this.isLoaded = true;
         });
         break;
@@ -58,11 +63,13 @@ export class CardComponent {
 
         if (this.repoSelectionService.getCodeQualityRecommendation() != '') {
           this.cardContent = this.repoSelectionService.getCodeQualityRecommendation();
+          this.checkMoreContent();
           this.isLoaded = true;
         }
 
         this.repoSelectionService.codeQualityRecommendation$.subscribe((cardContent) => {
           this.cardContent = cardContent;
+          this.checkMoreContent();
           this.isLoaded = true;
         });
         break;
@@ -71,16 +78,32 @@ export class CardComponent {
 
         if (this.repoSelectionService.getOptimizationRecommendation() != '') {
           this.cardContent = this.repoSelectionService.getOptimizationRecommendation();
+          this.checkMoreContent();
           this.isLoaded = true;
         }
 
         this.repoSelectionService.optimizationRecommendation$.subscribe((cardContent) => {
           this.cardContent = cardContent;
+          this.checkMoreContent();
           this.isLoaded = true;
         });
         break;
     }
 
+  }
+
+  ngAfterViewInit(): void {
+    this.checkMoreContent();
+  }
+
+  checkMoreContent(): void {
+    if (this.cardContent.length > 300) {
+      this.hasMoreContent = true;
+    }
+  }
+
+  toggleExpanded(): void {
+    this.expanded = !this.expanded;
   }
 
   mockWriterForOverview(component: { name: string; description: string; }, cardContent: {

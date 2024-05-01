@@ -3,11 +3,11 @@ import { LambdaService } from '../../services/lambda.service';
 import { RepoSelectionService } from '../../services/repo-selection.service';
 
 @Component({
-  selector: 'app-file-creation-buttons',
-  templateUrl: './file-creation-buttons.component.html',
-  styleUrl: './file-creation-buttons.component.scss'
+  selector: 'app-bottom-bar',
+  templateUrl: './bottom-bar.component.html',
+  styleUrl: './bottom-bar.component.scss'
 })
-export class FileCreationButtonsComponent {
+export class BottomBarComponent {
 
   constructor(private repoSelectionService: RepoSelectionService, private lambdaService: LambdaService) { }
 

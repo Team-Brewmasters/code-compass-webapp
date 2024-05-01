@@ -1,9 +1,12 @@
-<div class="frosted-glass-card" *ngIf="cardContent">
+<div class="frosted-glass-card" *ngIf="cardContent" [ngClass]="{'expanded': expanded}">
   <div class="card-container">
-
-    <div class="card">
+    <div class="card" [ngClass]="{'expanded': expanded}">
       <h2>{{cardTitle}}</h2>
-      <div [appTypewriter]="cardContent" [delay]="5"></div>
+      <div class="card-content">
+        <div [appTypewriter]="cardContent" [delay]="5"></div>
+      </div>
+      <button class="view-more-btn" *ngIf="!expanded && hasMoreContent" (click)="toggleExpanded()">View More</button>
+      <button class="close-btn" *ngIf="expanded" (click)="toggleExpanded()">Close</button>
     </div>
   </div>
 </div>
