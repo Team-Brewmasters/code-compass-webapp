@@ -34,7 +34,9 @@
       <div class="card-content">
         <div [appTypewriter]="cardContent" [delay]="5"></div>
       </div>
-      <button class="view-more-btn" *ngIf="!expanded && hasMoreContent" (click)="toggleExpanded()">View More</button>
+      <div class="view-more-container">
+        <button class="view-more-btn" *ngIf="!expanded && hasMoreContent" (click)="toggleExpanded()">View More</button>
+      </div>
       <button class="close-btn" *ngIf="expanded" (click)="toggleExpanded()">Close</button>
     </div>
   </div>
